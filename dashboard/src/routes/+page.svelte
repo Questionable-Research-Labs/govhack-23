@@ -2,10 +2,31 @@
 
 </svelte:head>
 
-<script>
+<script lang="ts">
     import NewsSourceCard from '../lib/components/NewsSourceCard.svelte';
-    // import { newsSources } from '../lib/newsSources.json';
-    let newsSources = [{"id": "news1", "value": -1}, {"id": "news2", "value": 0.5}]
+    import type { NewsSource } from "$lib/types";
+    import Footer from '../lib/components/Footer.svelte';
+
+    let newsSources: NewsSource[] = [
+        {
+            name: "RNZ",
+            value: 0
+        },
+        {
+            name: "NZ Herald",
+            value: 1
+        },
+        {
+            name: "Stuff",
+            value: -0.1
+        },
+        {
+            name: "Random Placeholder",
+            value: 0.5
+        }
+    ]
+
+
 </script>
 
 <div class='container'>
@@ -18,6 +39,10 @@
             <NewsSourceCard source={source} />
         {/each}
     </div>
+    <div class="about">
+
+    </div>
+    <Footer />
 </div>
 
 
@@ -33,6 +58,13 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+    .news-sources {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     h1 {

@@ -30,6 +30,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"sass": "^1.66.1"
+		"chart.js": "^4.3.3",
+		"chartjs-gauge": "^0.3.0",
+		"sass": "^1.66.1",
+		"svelte-chartjs": "^3.1.2"
 	}
 }
