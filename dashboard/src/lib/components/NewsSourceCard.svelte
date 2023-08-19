@@ -1,17 +1,19 @@
 <script lang="ts">
-    import type { NewsSource } from "$lib/types";
-    export let source: NewsSource;
+	import { calculateNewsOrgMetadata, type NewsOrgMetadata } from '$lib/data';
+    export let source: NewsOrgMetadata;
     import { onMount } from 'svelte';
+
+    const stats = calculateNewsOrgMetadata(source.name);
 
     // on click send to /site/id 
     function handleClick() {
-        window.location.href = `/site/${source.id}`;
+        window.location.href = `/site/${source.slug}`;
     }
 </script>
 
 <div>
     <h1>{source.name}</h1>
-    <h2>{source.value}</h2>
+    <h2>{stats.leftRightLean.toPrecision(3)}</h2>
 
     <button on:click={handleClick}>View</button>
 </div>
