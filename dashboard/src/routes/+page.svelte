@@ -1,5 +1,5 @@
 <svelte:head>
-
+    <title>BiasLens</title>
 </svelte:head>
 
 <script lang="ts">
@@ -10,19 +10,28 @@
     let newsSources: NewsSource[] = [
         {
             name: "RNZ",
-            value: 0
+            value: 0,
+            url: "https://www.rnz.co.nz/",
+            id: "rnz"
+            
         },
         {
             name: "NZ Herald",
-            value: 1
+            value: 1,
+            url: "https://www.nzherald.co.nz/",
+            id: "nzherald"
         },
         {
             name: "Stuff",
-            value: -0.1
+            value: -0.1,
+            url: "https://www.stuff.co.nz/",
+            id: "stuff"
         },
         {
             name: "Random Placeholder",
-            value: 0.5
+            value: 0.5,
+            url: "https://www.google.com/",
+            id: "google"
         }
     ]
 
@@ -31,7 +40,7 @@
 
 <div class='container'>
     <div class="title-box">
-        <h1>BiasLens</h1>
+        <img src="/logo-text.svg" alt="BiasLens Logo" height="150px"/>
         <h2>Bias dectection harnessing the power of AI</h2>
     </div>
     <div class="news-sources">
@@ -48,12 +57,11 @@
 
 <style lang="scss">
     .container {
-        background-color: #ede7e3;
         width: 100%;
         min-height: 100vh;  
     }
     .title-box {
-        min-height: 50vh;
+        min-height: 40vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -65,6 +73,7 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+        gap: 2em
     }
 
     h1 {
