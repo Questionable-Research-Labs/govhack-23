@@ -1,0 +1,6 @@
+fastai
+tqdm
+opencv
+dlib
+imutils
+ipywidgets
