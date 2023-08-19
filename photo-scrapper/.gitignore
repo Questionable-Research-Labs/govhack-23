@@ -1,2 +1,4 @@
 images*/*.jpg
 .env
+
+ImagesTable.csv
