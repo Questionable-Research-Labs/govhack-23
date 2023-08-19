@@ -3,3 +3,5 @@ pandas
 requests
 PIL
 ImageHash
+Google-Images-Search
+python-dotenv
