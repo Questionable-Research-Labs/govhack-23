@@ -12,7 +12,7 @@
 
 <div class='container'>
     <div class="title-box">
-        <img src="/logo-text.svg" alt="BiasLens Logo" height="150px"/>
+        <img src="/logo-text.svg" alt="BiasLens Logo" class="logo"/>
         <h2>Bias detection harnessing the power of AI</h2>
     </div>
     <div class="news-sources">
@@ -47,18 +47,30 @@
         flex-wrap: wrap;
         gap: 2em
     }
-
-    h1 {
-        margin: 0;
-        text-align: center;
-        font-size: 5em;
-        // color: #16697a;  
-    }
     
     h2 {
         margin: 0;
         text-align: center;
         font-size: 3em;
         font-weight: 100;
+    }
+
+    .logo {
+        width: 50%;
+        height: auto;
+    }
+
+    @media only screen and (max-width: 600px) {
+        h2 {
+            font-size: 2em;
+        }
+
+        .logo {
+            width: 80%;
+        }
+
+        .news-sources {
+            flex-direction: column;
+        }
     }
 </style>

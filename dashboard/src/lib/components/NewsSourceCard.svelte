@@ -45,5 +45,19 @@
         height: 50px;
         font-size: 1.2em;
         cursor: pointer;
+        transition: 0.1s ease-in-out;
     }
+
+    button:hover {
+        background-color: #00a0e0;
+    }
+
+    @media only screen and (max-width: 600px) {
+        div {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+
 </style>
