@@ -1,5 +1,5 @@
 <svelte:head>
-    <title>BiasLens</title>
+    <title>BiasLenz</title>
 </svelte:head>
 
 <script lang="ts">
@@ -12,7 +12,7 @@
 
 <div class='container'>
     <div class="title-box">
-        <img src="/logo-text.svg" alt="BiasLens Logo" class="logo"/>
+        <img src="/logo-text.svg" alt="BiasLenz Logo" class="logo"/>
         <h2>Bias detection harnessing the power of AI</h2>
     </div>
     <div class="news-sources">
@@ -22,7 +22,8 @@
     </div>
     <div class="about">
         <h2>You're probably wondering how this works.</h2>
-        <p>BiasLens gets photos from popular news sites and rates them on how they portray the individual.</p>
+        <p>BiasLenz gets photos from popular news sites and rates them on how they portray the individual.</p>
+
     </div>
     <Footer />
 </div>

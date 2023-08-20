@@ -23,31 +23,31 @@
         type: 'gauge',
         data: {
             datasets: [{
-            value: stats.leftRightLean,
-            minValue: -10,
-            data: [-5, 5, 10],
-            backgroundColor: ['#f15a29', '#00aeef', '#f15a29'],
+                value: stats.leftRightLean,
+                minValue: -10,
+                data: [-5, 5, 10],
+                backgroundColor: ['#f15a29', '#00aeef', '#f15a29'],
             }]
         },
         options: {
             needle: {
-            radiusPercentage: 2.5,
-            widthPercentage: 5,
-            lengthPercentage: 80,
-            color: 'rgba(0, 0, 0, 1)'
+                radiusPercentage: 2.5,
+                widthPercentage: 5,
+                lengthPercentage: 80,
+                color: 'rgba(0, 0, 0, 1)'
             },
             valueLabel: {
-            display: false,
-            formatter: (value: number) => {
-                return value;
-            },
-            color: 'rgba(255, 255, 255, 1)',
-            backgroundColor: 'rgba(0, 0, 0, 1)',
-            borderRadius: 5,
-            padding: {
-                top: 10,
-                bottom: 10
-            }
+                display: false,
+                formatter: (value: number) => {
+                    return value;
+                },
+                color: 'rgba(255, 255, 255, 1)',
+                backgroundColor: 'rgba(0, 0, 0, 1)',
+                borderRadius: 5,
+                padding: {
+                        top: 10,
+                        bottom: 10
+                }
             }
         },
         });
