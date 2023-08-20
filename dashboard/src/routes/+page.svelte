@@ -21,7 +21,8 @@
         {/each}
     </div>
     <div class="about">
-
+        <h2>You're probably wondering how this works.</h2>
+        <p>BiasLens gets photos from popular news sites and rates them on how they portray the individual.</p>
     </div>
     <Footer />
 </div>
@@ -45,7 +46,9 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 2em
+        gap: 2em;
+        margin-bottom: 6em;
+        padding: 0 2em;
     }
     
     h2 {
@@ -60,6 +63,26 @@
         height: auto;
     }
 
+    .about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 6em;
+        padding: 0 2em;
+        gap: 2em;
+
+        h2 {
+            grid-column: 1 / 3;
+        }
+    }
+
+    p {
+        font-size: 1.5em;
+        font-weight: 100;
+        text-align: center;
+    }
+
     @media only screen and (max-width: 600px) {
         h2 {
             font-size: 2em;
@@ -67,10 +90,6 @@
 
         .logo {
             width: 80%;
-        }
-
-        .news-sources {
-            flex-direction: column;
         }
     }
 </style>
