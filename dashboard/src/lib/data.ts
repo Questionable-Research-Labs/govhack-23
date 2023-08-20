@@ -77,6 +77,7 @@ export function getMPData(mpName: string) {
 }
 
 export function GetPartyData(partyName: string) {
+    console.log(PartyList, partyName)
     return PartyList.find(party => party.Party === partyName);
 }
 
@@ -85,18 +86,25 @@ export function calculateNewsOrgMetadata(newsOrg: NewsOrg): NewsOrgSentiments {
     let partyTotalSentiment: {
         [party: string]: number;
     } = {};
+    let partyTotalCount: {
+        [party: string]: number;
+    } = {};
     for (let row of rows) {
         let party = getMPData(row["mp_name"])?.Party as NewsOrg;
         if (partyTotalSentiment[party] === undefined) {
             partyTotalSentiment[party] = 0;
+            partyTotalCount[party] = 0;
         }
         partyTotalSentiment[party] += row["sentiment"] || 0;
+        partyTotalCount[party] +=1;
     }
 
     let leftRightLean = 0;
     for (let party in partyTotalSentiment) {
-        leftRightLean += partyTotalSentiment[party] * (GetPartyData(party)?.["Right/Left"] || 0);
+        console.log(party, partyTotalSentiment[party] / partyTotalCount[party])
+        leftRightLean += (partyTotalSentiment[party] / partyTotalCount[party]) * (GetPartyData(party)?.["Right/Left"]);
     }
+    // console.log(newsOrg,partyTotalSentiment, leftRightLean)
     return {
         org: newsOrg,
         partyTotalSentiment,

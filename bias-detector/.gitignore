@@ -3,3 +3,4 @@ images_*/
 ImagesTable.csv
 cropped_images
 sentiment_table.*
+*.json
