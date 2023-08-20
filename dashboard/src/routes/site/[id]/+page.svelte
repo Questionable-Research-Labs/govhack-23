@@ -41,7 +41,7 @@
         console.log(slug);
         newsOrg = Object.values(newsOrgData).find((x)=>x.slug == slug);
         if (newsOrg) {
-            photoList = findNewsOrgRows(newsOrg.name);
+            photoList = findNewsOrgRows(newsOrg.name).sort((a,b)=>(a.sentiment - b.sentiment));
         } else {
             // goto('/404');
         }
@@ -94,6 +94,8 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.5s ease;
+            aspect-ratio: 1;
+
             
             :global(img) {
                 width: 100%;

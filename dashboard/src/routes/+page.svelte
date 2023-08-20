@@ -6,8 +6,12 @@
     import NewsSourceCard from '../lib/components/NewsSourceCard.svelte';
     import type { NewsSource } from "$lib/types";
     import Footer from '../lib/components/Footer.svelte';
-	import { newsOrgData } from '$lib/data';
-    
+	import { findNewsOrgRows, newsOrgData } from '$lib/data';
+	import { GalleryImage, GalleryThumbnail, LightboxGallery } from 'svelte-lightbox';
+
+    const HEADSHOT_ROOT = '/compiledHeadshots';
+    const FULL_ROOT = '/compiledImages';
+
 </script>
 
 <div class='container'>
@@ -28,6 +32,33 @@
         <img src="/neural-net.svg" alt="neural net">
         <p>This is where our neural network comes in. We use this to classify if an image is portraying the individual in a good light or in a bad light.</p>
     </div>
+    {#each Object.values(newsOrgData) as source}
+    <h2>{source.name}</h2>
+    {@const photoList = findNewsOrgRows(source.name).sort((a,b)=>(a.sentiment - b.sentiment))}
+    {#if photoList}
+    <LightboxGallery  enableImageExpand customization={{lightboxFooterProps: {style: "display: none;"}}} arrowsConfig={{color: "#fff",character: 'hide', enableKeyboardControl: true}} >
+        <!-- Layout-->
+        <svelte:fragment slot="thumbnail">
+            <div class="galleryLayout">
+                {#each photoList as image, i}
+                    <GalleryThumbnail id={i} >
+                        <img src={`${HEADSHOT_ROOT}/${image.cropped_image_path}`} class="image-{i}" alt={image.mp_name}/>
+                        <!-- <p>{image.mp_name}</p> -->
+                    </GalleryThumbnail>
+                {/each}
+            </div>
+        </svelte:fragment>
+        {#each photoList as image, i}
+            <GalleryImage id={i} title="ssss">
+                <img src={`${FULL_ROOT}/${image.image_path}`}  class="image-{i}" alt={image.mp_name}/>
+            </GalleryImage>
+        {/each}
+    </LightboxGallery>
+    {/if}
+    {/each}
+
+
+
     <Footer />
 </div>
 
@@ -110,5 +141,66 @@
                 max-width: 100%;
             }
         }
+    }
+    .galleryLayout {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 1em;
+        padding: 1em;
+        // p {
+        //     position: absolute;
+        //     bottom: 6px;
+        //     width: 100%;
+        //     text-align: center;
+        // }
+        :global(.svelte-lightbox-thumbnail) {
+            border-radius: 0.5em;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            aspect-ratio: 1;
+
+            
+            :global(img) {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                cursor: pointer;
+            }
+            
+            
+        }
+        :global(.svelte-lightbox-thumbnail:hover) {
+            transform: scale(1.02);
+        }
+
+
+    }
+
+    :global(.svelte-lightbox-main) {
+        width: 100vw !important;
+        padding: 0 5em !important;
+        :global(.svelte-lightbox-body) {
+            aspect-ratio: 4/3;
+            margin: 0 auto;
+            :global(svg) {
+                filter: drop-shadow(0px 0px 2.2px rgba(0, 0, 0, 0.067)) drop-shadow(0px 0px 5.3px rgba(0, 0, 0, 0.097)) drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.12)) drop-shadow(0px 0px 17.9px rgba(0, 0, 0, 0.143)) drop-shadow(0px 0px 33.4px rgba(0, 0, 0, 0.173)) drop-shadow(0px 0px 80px rgba(0, 0, 0, 0.2));
+            }
+            :global(img) {
+                width: 100%;
+            }
+        }
+    }
+    @media screen and (max-width: 600px) {
+        :global(.svelte-lightbox-main) {
+            padding: 0 !important;
+        }
+        .galleryLayout {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    :global(.previous-button), :global(.next-button) {
+        cursor: pointer;
     }
 </style>
