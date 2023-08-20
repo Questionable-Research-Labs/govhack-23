@@ -24,8 +24,8 @@
         data: {
             datasets: [{
                 value: stats.leftRightLean,
-                minValue: -1,
-                data: [-0.5, 0.5, 1],
+                minValue: -0.5,
+                data: [-0.3, 0.3, 0.5],
                 backgroundColor: ['#f15a29', '#eeeeee', '#f15a29'],
             }]
         },
