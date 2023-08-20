@@ -23,7 +23,9 @@
     <div class="about">
         <h2>You're probably wondering how this works.</h2>
         <p>BiasLenz gets photos from popular news sites and rates them on how they portray the individual.</p>
-
+        <img src="/negative-positive-photo.svg" alt="example">
+        <p>The editor's choice of images can give us a good idea on what the opinion or bias of the article will be. For example, if a news site uses a photo of a politician that makes them look angry, it's likely that the article will be negative.</p>
+        <p>This is where our neural network comes in. We use this to classify if an image is portraying the individual in a good light or in a bad light.</p>
     </div>
     <Footer />
 </div>
@@ -65,16 +67,17 @@
     }
 
     .about {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         margin-bottom: 6em;
         padding: 0 2em;
         gap: 2em;
 
-        h2 {
-            grid-column: 1 / 3;
+        img { 
+            width: 60%;
+            height: auto;
         }
     }
 
@@ -91,6 +94,12 @@
 
         .logo {
             width: 80%;
+        }
+
+        .about {
+            img {
+                width: 100%;
+            }
         }
     }
 </style>
