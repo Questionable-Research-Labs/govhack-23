@@ -24,15 +24,15 @@
         data: {
             datasets: [{
                 value: stats.leftRightLean,
-                minValue: -10,
-                data: [-5, 5, 10],
+                minValue: -1,
+                data: [-0.5, 0.5, 1],
                 backgroundColor: ['#f15a29', '#eeeeee', '#f15a29'],
             }]
         },
         options: {
             needle: {
-                radiusPercentage: 2.5,
-                widthPercentage: 5,
+                radiusPercentage: 4,
+                widthPercentage: 8,
                 lengthPercentage: 80,
                 color: 'rgba(0, 0, 0, 1)'
             },
