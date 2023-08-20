@@ -26,7 +26,7 @@
                 value: stats.leftRightLean,
                 minValue: -10,
                 data: [-5, 5, 10],
-                backgroundColor: ['#f15a29', '#00aeef', '#f15a29'],
+                backgroundColor: ['#f15a29', '#eeeeee', '#f15a29'],
             }]
         },
         options: {
@@ -56,12 +56,12 @@
 
 <div class="container">
     <h1>{source.name}</h1>
+    <p>Bias Score: {stats.leftRightLean.toPrecision(3)}</p>
 
     <div id="canvas-holder" style="width:100%">
         <canvas id="chart" bind:this={canvas_elm}></canvas>
     </div>
 
-    <h2>Bias Score: {stats.leftRightLean.toPrecision(3)}</h2>
 
     <button on:click={handleClick}>View</button>
 </div>
@@ -83,21 +83,27 @@
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
     }
     button {
-        background-color: #00aeef;
-        color: #fff;
-        border: none;
+        background-color: #eeeeee;
+        border: 0px solid black;
         border-radius: 5px;
         padding: 10px;
         // margin: 10px;
         width: 100px;
         height: 50px;
         font-size: 1.2em;
+        font-weight: bolder;
         cursor: pointer;
         transition: 0.1s ease-in-out;
     }
 
+    p {
+        margin-top: 0;
+        font-weight: bolder;
+    }
+
     button:hover {
-        background-color: #00a0e0;
+        background-color: #f15a29;
+        border: #f15a29;
     }
 
     h2, h1 {
